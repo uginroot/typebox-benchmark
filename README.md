@@ -1,16 +1,12 @@
 ### Schemas used in the benchmark
 ```ts
 const schemaWithCodec = Type.Object({
-    info: Type.Object({
-        name: Type.Codec(Type.String())
-            .Decode((value) => value)
-            .Encode((value) => value),
-    }),
+    name: Type.Codec(Type.String())
+        .Decode((value) => value)
+        .Encode((value) => value),
 });
 const schemaWithoutCodec = Type.Object({
-    info: Type.Object({
-        name: Type.String(),
-    }),
+    name: Type.String(),
 });
 ```
 

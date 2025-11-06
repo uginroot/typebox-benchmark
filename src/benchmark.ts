@@ -2,26 +2,20 @@ import {Type} from 'typebox';
 import {Compile} from 'typebox/compile';
 
 const schemaWithCodec = Type.Object({
-    info: Type.Object({
-        name: Type.Codec(Type.String())
-            .Decode((value) => value)
-            .Encode((value) => value),
-    }),
+    name: Type.Codec(Type.String())
+        .Decode((value) => value)
+        .Encode((value) => value),
 });
 const validatorWithCodec = Compile(schemaWithCodec);
 
 const schemaWithoutCodec = Type.Object({
-    info: Type.Object({
-        name: Type.String(),
-    }),
+    name: Type.String(),
 });
 const validatorWithoutCodec = Compile(schemaWithoutCodec);
 
 
 const testData = {
-    info: {
-        name: 'John Doe',
-    },
+    name: 'John Doe',
 };
 
 

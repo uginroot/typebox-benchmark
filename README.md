@@ -16,19 +16,20 @@ const schemaWithoutCodec = Type.Object({
 
 ### Result 100000 iterations with tsx
 
-| (index) | name                   | duration (ms) | ops/sec  |
-|---------|------------------------|---------------|----------|
-| 0       | check without codec    | 1.75          | 57123598 |
-| 1       | check with codec       | 1.8           | 55493064 |
-| 2       | decode without codec   | 1.03          | 97115005 |
-| 3       | decode with codec      | 8843.97       | 11307    |
+| (index) | name                   | duration (ms) | ops/sec   |
+|---------|------------------------|---------------|-----------|
+| 0       | 'check without codec'  | 1.58          | 63392125  |
+| 1       | 'check with codec'     | 1.63          | 61248314  |
+| 2       | 'decode without codec' | 0.94          | 106387845 |
+| 3       | 'decode with codec'    | 5697.65       | 17551     |
 
 ### Result 100000 iterations with node
 
 
 | (index) | name                   | duration (ms) | ops/sec  |
 |---------|------------------------|---------------|----------|
-| 0       | check without codec    | 1.78          | 56253062 |
-| 1       | check with codec       | 1.85          | 53914547 |
-| 2       | decode without codec   | 1.19          | 84161128 |
-| 3       | decode with codec      | 659.33        | 151670   |
+| 0       | 'check without codec'  | 1.65          | 60484871 |
+| 1       | 'check with codec'     | 1.63          | 61356394 |
+| 2       | 'decode without codec' | 1.01          | 98885266 |
+| 3       | 'decode with codec'    | 417.85        | 239322   |
+

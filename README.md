@@ -1,4 +1,6 @@
 ### Schemas used in the benchmark
+
+#### Small Object
 ```ts
 const schemaWithCodec = Type.Object({
     name: Type.Codec(Type.String())
@@ -7,6 +9,46 @@ const schemaWithCodec = Type.Object({
 });
 const schemaWithoutCodec = Type.Object({
     name: Type.String(),
+});
+```
+
+#### Big Object
+```ts
+const schemaWithCodec = Type.Object({
+    type: Type.Literal("FE.WidgetCustomizationResolved"),
+    source: Type.String(),
+    headers: Type.Object({
+        dateTime: Type.Codec(Type.String({ format: "date-time" })).
+            Decode((value: string) => value).
+            Encode((value: string) => value), // only one field with codec without change value
+        userAgent: Type.String(),
+        location: Type.String(),
+        app: Type.String(),
+        shopId: Type.Number(),
+        sessionToken: Type.Union([Type.String(), Type.Null()]),
+        customerId: Type.Union([Type.Number(), Type.Null()]),
+        ipAddress: Type.Union([Type.String({ format: "ipv4" }), Type.String({ format: "ipv6" })])
+    }),
+    payload: Type.Object({
+        widgetName: Type.String()
+    })
+});
+const schemaWithoutCodec = Type.Object({
+    type: Type.Literal("FE.WidgetCustomizationResolved"),
+    source: Type.String(),
+    headers: Type.Object({
+        dateTime: Type.String({ format: "date-time" }),
+        userAgent: Type.String(),
+        location: Type.String(),
+        app: Type.String(),
+        shopId: Type.Number(),
+        sessionToken: Type.Union([Type.String(), Type.Null()]),
+        customerId: Type.Union([Type.Number(), Type.Null()]),
+        ipAddress: Type.Union([Type.String({ format: "ipv4" }), Type.String({ format: "ipv6" })])
+    }),
+    payload: Type.Object({
+        widgetName: Type.String()
+    })
 });
 ```
 
